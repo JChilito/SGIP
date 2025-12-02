@@ -80,6 +80,7 @@ Create a local MySQL database named `sgip_db` and configure your local credentia
 spring.datasource.url=jdbc:mysql://localhost:3306/sgip_db
 spring.datasource.username=root
 spring.datasource.password=your_password
+```
 2. Running the Backend (Spring Boot)
 Open a terminal in the root folder and run:
 
