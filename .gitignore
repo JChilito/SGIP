@@ -1,0 +1,38 @@
+# --- IDEs y Sistema Operativo (Global) ---
+.idea/
+.vscode/
+*.swp
+*.ntvs*
+*.njsproj
+*.sln
+*.suo
+.DS_Store
+Thumbs.db
+
+# --- BACKEND (Java / Spring Boot) ---
+backend/target/
+backend/bin/
+backend/.mvn/wrapper/
+backend/.settings/
+backend/.classpath
+backend/.project
+backend/*.class
+backend/*.log
+backend/*.jar
+backend/*.war
+
+# --- FRONTEND (Node / Angular / React) ---
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/out/
+frontend/.angular/
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# --- SEGURIDAD (¡Muy Importante!) ---
+.env
+.env.local
+backend/src/main/resources/application-local.properties
