@@ -81,23 +81,25 @@ spring.datasource.url=jdbc:mysql://localhost:3306/sgip_db
 spring.datasource.username=root
 spring.datasource.password=your_password
 ```
-2. Running the Backend (Spring Boot)
+### 2. Running the Backend (Spring Boot)
 Open a terminal in the root folder and run:
 
-Bash
+```Bash
 
 cd backend
 ./mvnw spring-boot:run
+```
 The API will start at http://localhost:8080.
 
-3. Running the Frontend
+### 3. Running the Frontend
 Open a new terminal in the root folder and run:
 
-Bash
+```Bash
 
 cd frontend
 npm install
 npm start
+```
 The application will likely start at http://localhost:3000 or http://localhost:4200.
 
 👤 Author
