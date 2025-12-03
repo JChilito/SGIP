@@ -36,3 +36,6 @@ frontend/yarn-error.log*
 .env
 .env.local
 backend/src/main/resources/application-local.properties
+
+# Credenciales de Firebase (JSON)
+backend/src/main/resources/service-account-file.json
