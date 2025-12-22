@@ -18,7 +18,7 @@ public interface ProductRestMapper {
      * Map a object CreateProductRequest to a object Product
      * 
      * @param request
-     * @return
+     * @return the Product mapped from the CreateProductRequest
      */
     Product toDomain(CreateProductRequest request);
 
@@ -26,7 +26,7 @@ public interface ProductRestMapper {
      * Map a object UpdateProductRequest to a object Product
      * 
      * @param request
-     * @return
+     * @return the Product mapped from the UpdateProductRequest
      */
     Product toDomain(UpdateProductRequest request);
 
@@ -34,7 +34,7 @@ public interface ProductRestMapper {
      * Map a object Product to a object ProductResponse
      * 
      * @param product
-     * @return
+     * @return the ProductResponse mapped from the Product
      */
     ProductResponse toResponse(Product product);
 
@@ -42,7 +42,7 @@ public interface ProductRestMapper {
      * Map a list of objects Product to a list of objects ProductResponse
      * 
      * @param products
-     * @return
+     * @return the list of ProductResponse mapped from the list of Product
      */
     List<ProductResponse> toResponseList(List<Product> products);
 }

@@ -11,6 +11,7 @@ import org.springframework.core.io.ClassPathResource;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.auth.FirebaseAuth;
 
 @Configuration
 public class FirebaseConfig {
@@ -18,6 +19,14 @@ public class FirebaseConfig {
     @Value("${firebase.config.path}")
     private String firebaseConfigPath;
 
+    /**
+     * This method initializes the FirebaseApp instance with the credentials from
+     * the
+     * service account file (Private key)
+     * 
+     * @return FirebaseApp
+     * @throws IOException
+     */
     @Bean
     public FirebaseApp firebaseApp() throws IOException {
         // Obtain the service account file (Private key)
@@ -39,5 +48,16 @@ public class FirebaseConfig {
         // The process of initializing Firebase is expensive, so it should be avoided
         // initializing it several times
         return FirebaseApp.getInstance();
+    }
+
+    /**
+     * This method returns the FirebaseAuth instance
+     * 
+     * @param firebaseApp
+     * @return FirebaseAuth
+     */
+    @Bean
+    public FirebaseAuth firebaseAuth(FirebaseApp firebaseApp) {
+        return FirebaseAuth.getInstance();
     }
 }

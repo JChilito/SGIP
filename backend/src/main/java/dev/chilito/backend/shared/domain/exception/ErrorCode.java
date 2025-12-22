@@ -14,7 +14,9 @@ public enum ErrorCode {
     ENTITY_NOT_FOUND("GC-0003", "Entity not found"),
     BUSINESS_RULE_VIOLATION("GC-0004", "Business rule violation"),
     INVALID_CREDENTIALS("GC-0005", "Invalid credentials"),
-    USER_DISABLED("GC-0006", "The user has not been verified, please check your email to verify your account");
+    USER_DISABLED("GC-0006", "The user has not been verified, please check your email to verify your account"),
+    ACCESS_DENIED("GC-0007", "Access denied"),
+    AUTHENTICATION_FAILED("GC-0008", "Authentication failed");
 
     private final String code;
     private final String message;

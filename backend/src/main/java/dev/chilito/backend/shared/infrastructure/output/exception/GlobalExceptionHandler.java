@@ -7,6 +7,8 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -96,6 +98,54 @@ public class GlobalExceptionHandler {
                 .build();
 
         return ResponseEntity.status(status).body(response);
+    }
+
+    /**
+     * Handles access denied exceptions
+     * 
+     * @param ex
+     * @param request
+     * @return
+     */
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ErrorResponse> handleAccessDeniedException(AccessDeniedException ex,
+            HttpServletRequest request) {
+        ErrorCode errorCode = ErrorCode.ACCESS_DENIED;
+
+        ErrorResponse response = ErrorResponse.builder()
+                .errorCode(errorCode != null ? errorCode.getCode() : "GC-0007")
+                .errorMessage("Access Denied: You do not have permission to access this resource.")
+                .httpStatusCode(HttpStatus.FORBIDDEN.value())
+                .url(request.getRequestURI())
+                .method(request.getMethod())
+                .timestamp(LocalDateTime.now())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
+    }
+
+    /**
+     * Handles authentication exceptions
+     * 
+     * @param ex
+     * @param request
+     * @return
+     */
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<ErrorResponse> handleAuthenticationException(AuthenticationException ex,
+            HttpServletRequest request) {
+        ErrorCode errorCode = ErrorCode.AUTHENTICATION_FAILED;
+
+        ErrorResponse response = ErrorResponse.builder()
+                .errorCode(errorCode != null ? errorCode.getCode() : "GC-0008")
+                .errorMessage("Authentication Failed: " + ex.getMessage())
+                .httpStatusCode(HttpStatus.UNAUTHORIZED.value())
+                .url(request.getRequestURI())
+                .method(request.getMethod())
+                .timestamp(LocalDateTime.now())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
     }
 
     /**
